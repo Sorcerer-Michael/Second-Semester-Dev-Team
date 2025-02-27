@@ -2,3 +2,4 @@
 *.ctxt
 *.iml
 project.greenfoot
+.DS_Store
