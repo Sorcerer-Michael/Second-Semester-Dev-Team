@@ -9,7 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Player extends Actor
 {
     public Player () {
-        
+        // set player sprite to imagee
+        setImage("images/player1.png");
     }
     /**
      * Act - do whatever the Player wants to do. This method is called whenever
