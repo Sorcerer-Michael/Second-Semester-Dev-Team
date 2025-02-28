@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class MyWorld extends World
+public class RoadWorld extends World
 {
     int WORLDWIDTH = getWidth();
     int WORLDHEIGHT = getHeight();
@@ -21,7 +21,7 @@ public class MyWorld extends World
      * Constructor for objects of class MyWorld.
      * 
      */
-    public MyWorld()
+    public RoadWorld()
     {   
         super(500, 600, 1);
         
