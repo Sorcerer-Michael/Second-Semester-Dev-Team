@@ -11,7 +11,6 @@ public class Player extends Actor
     private int speed = 1;
     
     public Player () {
-
     }
 
     /**
@@ -40,11 +39,4 @@ public class Player extends Actor
         }
     }
     
-    public void DrivePlayer(){
-        if(speed > 0){
-            setLocation(getX(), getY() - speed); // Update by "Speed" pixel UP
-        } else {
-            setLocation(getX(), getY()); // stays in position
-        }
-    }
 }
