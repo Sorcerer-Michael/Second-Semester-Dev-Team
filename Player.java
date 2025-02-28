@@ -3,80 +3,98 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Player here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jonathan Washington
+ * @version 1.0
+ * 
+ * Player class 
  */
 public class Player extends Actor
 {
-    private int rotationSpeed = 2;
-    boolean changedDirection = false;
+    // player variables 
+    public String sprite = "images/player1_side.png"; // sprite is a 2d image
+    public int rotationSpeed = 2;
+    public int moveSpeed = 3;
+    public int initialRotation = 270;
     
     
-    // no limited movement controls
-    final int RIGHTROTATIONLIMIT = 360; // default: 315
-    final int LEFTROTATIONLIMIT = -360; // default: 225
     
-    // Limited movement controls
-    //final int RIGHTROTATIONLIMIT = 315; // default: 315
-    //final int LEFTROTATIONLIMIT = 225; // default: 225
     
+    // Movement keys
+    private boolean pressD;
+    private boolean pressA;
+    private boolean pressW;
+    private boolean pressS;
+    
+    // no limited rotation movement controls
+    final int RIGHTROTATIONLIMIT = 360; // default: 315 - limited controls
+    final int LEFTROTATIONLIMIT = -360; // default: 225 - limited controls
+    
+
+    
+    
+    // 3 Overloaded Player constructors
     public Player () {
-        setImage("images/player1_side.png");
-        setRotation(270);
-        
-        
-        // DEBUG 
-        System.out.println(getRotation());
+        setImage(sprite);
+        setRotation(initialRotation);
     }
+    public Player(String sprite) {
+        setImage(sprite);
+        setRotation(initialRotation);
+    }
+    // Full control over player variables
+    public Player(String sprite, int moveSpeed, int rotationSpeed, int initialRotation) {
+        setImage(sprite);
+        setRotation(initialRotation);
+        this.moveSpeed = moveSpeed;
+        this.rotationSpeed = rotationSpeed;
+        this.initialRotation = initialRotation;
+    }
+    
     /**
      * Act - do whatever the Player wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
     {
-        // Add your action code here.
-        movement();
-        
+        // Player Movement
+        pressD = Greenfoot.isKeyDown("d");
+        pressA = Greenfoot.isKeyDown("a");
+        pressW = Greenfoot.isKeyDown("w");
+        pressS = Greenfoot.isKeyDown("s");
+        movement(pressD, pressA, pressW, pressS);
         
         // reset variables
-        changedDirection = false;
+        
     }
     
     
-    public void movement() {
-        // turn(int amount) : turns actor in degrees
-        // turnTowards(int x, int y) : Turns this actor to face towards a certain location
-        // setLocation(int x, int y) : assign a new location to this actor
-        // setRotation(int rotation) : set the rotation of this actor
-        
+    public void movement(boolean pressD, boolean pressA, boolean pressW, boolean pressS) {
+        // turn(int amount) : Turn this actor by the specified amount (in degrees).
+        // move(int distance) : Move this actor the specified distance in the direction it is currently facing.
+    
         // clockwise rotation
-        if (Greenfoot.isKeyDown("d")) {
-            
-            
-            if (getRotation() < RIGHTROTATIONLIMIT && getRotation() < (360-1) && changedDirection == false) {
+        if (pressD) {
+            if (getRotation() < RIGHTROTATIONLIMIT && getRotation() < (360-1)) {
                 turn(rotationSpeed);
             }
-            changedDirection = true;
         }
         // counter-clockwise rotation
-        if (Greenfoot.isKeyDown("a")) {
-            if (getRotation() > LEFTROTATIONLIMIT && getRotation() < (360-1) && changedDirection == false) {
+        if (pressA) {
+            if (getRotation() > LEFTROTATIONLIMIT && getRotation() < (360-1)) {
                 turn(-rotationSpeed);
             } 
-            changedDirection = true;
         }
         
-        // up
-        if (Greenfoot.isKeyDown("w")) {
-            move(3);
-            //setLocation(getX(), getY() - 5);
+        // move forwards
+        if (pressW) {
+            move(moveSpeed);
         }
-        // down
-        if (Greenfoot.isKeyDown("s")) {
-            move(-3);
+        // move backwards
+        if (pressS) {
+            move(-moveSpeed);
         }
-        
         
     }
+    
     
 }
