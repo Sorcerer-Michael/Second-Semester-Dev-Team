@@ -8,6 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Player extends Actor
 {
+    private int speed = 1;
+    
     public Player () {
 
     }
@@ -20,14 +22,29 @@ public class Player extends Actor
     {
         // Add your action code here.
         movement();
+        
     }
 
     public void movement() {
         if (Greenfoot.isKeyDown("a")) {
-            setLocation(getX() - 4, getY()); // Move left
+            setLocation(getX() - 5, getY()); // Move left
         }
         if (Greenfoot.isKeyDown("d")) {
-            setLocation(getX() + 4, getY()); // Move right
+            setLocation(getX() + 5, getY()); // Move right
+        }
+        if (Greenfoot.isKeyDown("s")){
+            setLocation(getX(), getY() + 5); // Move down
+        }
+        if (Greenfoot.isKeyDown("w")){
+            setLocation(getX(), getY() - 5); // Move Up
+        }
+    }
+    
+    public void DrivePlayer(){
+        if(speed > 0){
+            setLocation(getX(), getY() - speed); // Update by "Speed" pixel UP
+        } else {
+            setLocation(getX(), getY()); // stays in position
         }
     }
 }
