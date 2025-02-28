@@ -17,8 +17,6 @@ public class Player extends Actor
     public int initialRotation = 270;
     
     
-    
-    
     // Movement keys
     private boolean pressD;
     private boolean pressA;
@@ -40,7 +38,7 @@ public class Player extends Actor
 
         // set player sprite to imagee
         setImage("images/player1.png");
-
+        
     }
     public Player(String sprite) {
         setImage(sprite);
@@ -70,6 +68,10 @@ public class Player extends Actor
         
         // reset variables
         
+        
+        // Logging methods
+        movementLog(); // logging movements in terminal
+        checkPlayerValues(); // press ` : to check player initial values
     }
     
     
@@ -77,29 +79,50 @@ public class Player extends Actor
         // turn(int amount) : Turn this actor by the specified amount (in degrees).
         // move(int distance) : Move this actor the specified distance in the direction it is currently facing.
     
-        // clockwise rotation
+        
+        // clockwise rotation / right rotation
         if (pressD) {
             if (getRotation() < RIGHTROTATIONLIMIT && getRotation() < (360-1)) {
                 turn(rotationSpeed);
             }
         }
-        // counter-clockwise rotation
+        // counter-clockwise rotation / left rotation
         if (pressA) {
             if (getRotation() > LEFTROTATIONLIMIT && getRotation() < (360-1)) {
                 turn(-rotationSpeed);
             } 
         }
         
-        // move forwards
+        // move forwards : relative to player's rotation
         if (pressW) {
             move(moveSpeed);
         }
-        // move backwards
+        // move backwards : relative to player's rotation
         if (pressS) {
             move(-moveSpeed);
         }
         
     }
     
+    
+    // DEBUG Methods (only used for testing)
+    public void checkPlayerValues() {
+        if (Greenfoot.isKeyDown("`")) {
+            System.out.printf("player sprite used: %s\n", sprite);
+            System.out.printf("Player initial rotation: %d\n", initialRotation);
+            System.out.printf("Player move speed: %d\n", moveSpeed);
+            System.out.printf("Player rotation speed: %d\n", rotationSpeed);
+            
+            Greenfoot.delay(20); // Stops from logging constantly
+        }
+        
+    }
+    public void movementLog() {
+        if (pressD != false) System.out.printf("Turning right: %b\n", pressD);
+        if (pressA != false) System.out.printf("Turning left: %b\n", pressA);
+        if (pressW != false) System.out.printf("Moving forward: %b\n", pressW);
+        if (pressS != false) System.out.printf("Moving backwards: %b\n", pressS);
+
+    }
     
 }
