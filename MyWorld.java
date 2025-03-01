@@ -10,7 +10,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld extends World
 {
     // Player object
-    Player player = new Player();
+    public Player player = new Player("images/player1_side.png"); // Player(String sprite, int moveSpeed, int rotationSpeed, int initialRotation)
     
     // assuming world dimensions wont change after starting : change if needed to regular int variable
     final int WORLDWIDTH = getWidth();
@@ -35,5 +35,10 @@ public class MyWorld extends World
         // Add Actors 
         addObject(player, WORLDWIDTH/2, WORLDHEIGHT/2);
         
+        
+    }
+    
+    public Player returnPlayer() {
+        return player;
     }
 }
