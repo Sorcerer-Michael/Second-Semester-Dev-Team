@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Obstacle1 extends Actor
 {
-    private int scrollspeed;    
+    private int scrollspeed;  
 
     /**
      * Act - do whatever the Obstacle1 wants to do. This method is called whenever
@@ -29,7 +29,10 @@ public class Obstacle1 extends Actor
 
     private void InPosition(){
         setLocation(getX(), getY() + scrollspeed);
+        
+        RoadWorld world = (RoadWorld) getWorld();
         if (getY() >= getWorld().getHeight()){ //If obstacle touches the bottom screen
+            System.out.println("Obstacle reached bottom");
             getWorld().removeObject(this); 
             addNewObstacle();
         }
