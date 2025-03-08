@@ -16,6 +16,7 @@ public class RoadWorld extends World
     private boolean scrollComplete = false;
  
     Player player = new Player(); // Player object
+    Obstacle1 obstacle1 = new Obstacle1(); // Add Obstacle1
  
     /**
      * Constructor for objects of class MyWorld.
@@ -30,7 +31,7 @@ public class RoadWorld extends World
  
         // Add Actors
         addObject(player, WORLDWIDTH/2, WORLDHEIGHT-50);
- 
+        addObject(obstacle1, 0, 15);
     }
  
     public void act() {
