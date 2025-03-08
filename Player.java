@@ -1,15 +1,15 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * Write a description of class Player here.
- * 
- * @author (your name) 
+ *
+ * @author (your name)
  * @version (a version number or a date)
  */
 public class Player extends Actor
 {
     private int speed = 1;
-    
+
     public Player () {
     }
 
@@ -21,7 +21,7 @@ public class Player extends Actor
     {
         // Add your action code here.
         movement();
-        
+
     }
 
     public void movement() {
@@ -38,5 +38,5 @@ public class Player extends Actor
             setLocation(getX(), getY() - 5); // Move Up
         }
     }
-    
+
 }
