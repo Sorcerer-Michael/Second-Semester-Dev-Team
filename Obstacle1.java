@@ -9,7 +9,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Obstacle1 extends Actor
 {
     private int scrollspeed;  
-
     /**
      * Act - do whatever the Obstacle1 wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -29,13 +28,7 @@ public class Obstacle1 extends Actor
 
     private void InPosition(){
         setLocation(getX(), getY() + scrollspeed);
-        
-        RoadWorld world = (RoadWorld) getWorld();
-        if (getY() >= getWorld().getHeight()){ //If obstacle touches the bottom screen
-            System.out.println("Obstacle reached bottom");
-            getWorld().removeObject(this); 
-            addNewObstacle();
-        }
+
     }
 
     private void checkCollision(){
@@ -45,11 +38,4 @@ public class Obstacle1 extends Actor
         }
     }
 
-    private void addNewObstacle(){
-        RoadWorld world = (RoadWorld) getWorld();
-        int randomX = Greenfoot.getRandomNumber(world.getWidth());
-
-        Obstacle1 newObstacle = new Obstacle1(scrollspeed);
-        world.addObject(newObstacle, randomX, -100);
-    }
 }

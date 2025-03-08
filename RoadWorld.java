@@ -12,13 +12,11 @@ public class RoadWorld extends World
     int WORLDHEIGHT = getHeight();
 
     private GreenfootImage backgroundImage;
-    private int scrollY;
+    public int scrollY;
     private boolean scrollComplete = false;
     public int scrollspeed = 4;
 
     Player player = new Player(); // Player object
-    Obstacle1 obstacle1 = new Obstacle1(scrollspeed); // Add Obstacle1
-
     /**
      * Constructor for objects of class MyWorld.
      *
@@ -29,18 +27,16 @@ public class RoadWorld extends World
 
         backgroundImage = new GreenfootImage("road.png");
         scrollY = -backgroundImage.getHeight() + getHeight(); // Bottom Y-Coordinate
-
         setBackground(backgroundImage);
 
         // Add Actors
         addObject(player, WORLDWIDTH/2, WORLDHEIGHT-50);
-
-        addObject(obstacle1, 250, 300);
+        addNewObstacle();
     }
 
     public void act() {
         checkScrolling();
-        }
+    }
 
     private void scrollBackground(){
         if (scrollY < 0) {
@@ -57,5 +53,14 @@ public class RoadWorld extends World
             scrollBackground();
         }
     }
+
+    public void addNewObstacle(){
+        int randomX = Greenfoot.getRandomNumber(getWidth());
+        Obstacle1 newObstacle = new Obstacle1(scrollspeed);
+        addObject(newObstacle, randomX, 0);
+    }  
     
+    public int getScrollY(){
+        return scrollY;
+    }
 }
