@@ -34,9 +34,7 @@ public class RoadWorld extends World
     }
  
     public void act() {
-        if (!scrollComplete){
-            scrollBackground();
-        }
+        checkScrolling();
     }
  
     private void scrollBackground(){
@@ -48,5 +46,10 @@ public class RoadWorld extends World
             scrollComplete = true;
         }
     }
- 
+    
+    private void checkScrolling(){
+        if (!scrollComplete){
+            scrollBackground();
+        }
+    }
 }
