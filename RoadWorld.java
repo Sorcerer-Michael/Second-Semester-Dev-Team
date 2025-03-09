@@ -37,6 +37,7 @@ public class RoadWorld extends World
 
     public void act() {
         checkScrolling();
+        isGameFinished();
     }
 
     private void scrollBackground(){
@@ -59,9 +60,16 @@ public class RoadWorld extends World
         return scrollComplete;
     }
     
-    public void addNewObstacle1(){ //Random Spawn per Run
+    private void addNewObstacle1(){ //Random Spawn per Run
         int randomX = Greenfoot.getRandomNumber(getWidth());
         Obstacle1 newObstacle = new Obstacle1(scrollspeed);
         addObject(newObstacle, randomX, 0);
     }  
+    
+    private void isGameFinished(){
+        if (player.getY() <= 0 && scrollComplete){
+            System.out.println("You Win");
+            Greenfoot.stop();
+        }
+    }
 }
