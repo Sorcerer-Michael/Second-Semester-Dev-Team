@@ -13,7 +13,7 @@ public class RoadWorld extends World
 
     private GreenfootImage backgroundImage;
     public int scrollY;
-    private boolean scrollComplete = false;
+    public boolean scrollComplete = false;
     public int scrollspeed = 4;
 
     Player player = new Player(); // Player object
@@ -31,7 +31,8 @@ public class RoadWorld extends World
 
         // Add Actors
         addObject(player, WORLDWIDTH/2, WORLDHEIGHT-50);
-        addNewObstacle();
+        addNewObstacle1();
+        addNewObstacle1();
     }
 
     public void act() {
@@ -42,7 +43,7 @@ public class RoadWorld extends World
         if (scrollY < 0) {
             GreenfootImage background = getBackground();
             background.drawImage(backgroundImage, 0, scrollY);
-            scrollY += scrollspeed; // Adds 4 pixels to ScrollY
+            scrollY += scrollspeed; 
         } else {
             scrollComplete = true;
         }
@@ -54,13 +55,13 @@ public class RoadWorld extends World
         }
     }
 
-    public void addNewObstacle(){
+    public boolean isScrollComplete(){
+        return scrollComplete;
+    }
+    
+    public void addNewObstacle1(){ //Random Spawn per Run
         int randomX = Greenfoot.getRandomNumber(getWidth());
         Obstacle1 newObstacle = new Obstacle1(scrollspeed);
         addObject(newObstacle, randomX, 0);
     }  
-    
-    public int getScrollY(){
-        return scrollY;
-    }
 }

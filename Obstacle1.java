@@ -17,6 +17,7 @@ public class Obstacle1 extends Actor
     {
         checkCollision();
         InPosition();
+        addNewObstacle();
     }
 
     /**
@@ -38,4 +39,27 @@ public class Obstacle1 extends Actor
         }
     }
 
+    private void addNewObstacle() {
+        if (isAtEdge()) {
+            World world = getWorld();  // Get the world instance
+
+            if (world instanceof RoadWorld) { 
+                RoadWorld roadWorld = (RoadWorld) world; 
+
+                if (roadWorld.isScrollComplete()) { 
+                    
+                    Obstacle1 lastObstacle = (Obstacle1) world.getObjects(Obstacle1.class).get(0);
+                    if (lastObstacle != null){
+                        
+                        world.removeObject(lastObstacle);
+                    }
+                    return;
+                }
+
+                world.removeObject(this);
+                int randomX = Greenfoot.getRandomNumber(world.getWidth());
+                world.addObject(new Obstacle1(scrollspeed), randomX, -50);
+            }
+        }
+    }
 }
