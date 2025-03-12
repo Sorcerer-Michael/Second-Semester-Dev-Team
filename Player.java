@@ -1,5 +1,5 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+ 
 /**
  * Write a description of class Player here.
  * 
@@ -103,8 +103,6 @@ public class Player extends Actor
         }
         
     }
-    
-    
     // DEBUG Methods (only used for testing)
     public void checkPlayerValues() {
         if (Greenfoot.isKeyDown("`")) {
@@ -124,5 +122,4 @@ public class Player extends Actor
         if (pressS != false) System.out.printf("Moving backwards: %b\n", pressS);
 
     }
-    
 }
