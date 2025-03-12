@@ -8,6 +8,9 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class RoadWorld extends World
 {
+    private SimpleTimer time = new SimpleTimer();
+    Counter timer = new Counter();
+    
     int WORLDWIDTH = getWidth();
     int WORLDHEIGHT = getHeight();
  
@@ -27,7 +30,12 @@ public class RoadWorld extends World
  
         backgroundImage = new GreenfootImage("road.png");
         scrollY = -backgroundImage.getHeight() + getHeight(); // Bottom Y-Coordinate
- 
+        Greenfoot.setSpeed(50);
+        
+        timer.setValue(30);
+        time.mark();
+        showText("Timer", 40, 20);
+        addObject(timer, 40, 50);
         // Add Actors
         addObject(player, WORLDWIDTH/2, WORLDHEIGHT-50);
  
@@ -36,6 +44,11 @@ public class RoadWorld extends World
     public void act() {
         if (!scrollComplete){
             scrollBackground();
+        }
+        
+        timer.setValue(30 - time.millisElapsed()/1000);
+        if(timer.getValue() == 0){
+            Greenfoot.stop();
         }
     }
  

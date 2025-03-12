@@ -33,12 +33,12 @@ public class Player extends Actor
     // 3 Overloaded Player constructors
     public Player () {
 
+
         setImage(sprite);
         setRotation(initialRotation);
 
         // set player sprite to imagee
         setImage("images/player1.png");
-        
     }
     public Player(String sprite) {
         setImage(sprite);
