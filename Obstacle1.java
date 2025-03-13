@@ -6,39 +6,56 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Obstacle1 extends Actor
+public class Obstacle1 extends Actor implements Obstacle
 {
-    private int scrollspeed;  
-    /**
-     * Act - do whatever the Obstacle1 wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act()
-    {
-        checkCollision();
-        InPosition();
-        addNewObstacle();
-    }
-
+    private int scrollspeed;
+    
+    
     /**
      * Constructor for Obstacle1; Takes Scroll Speed as Input in RoadWorld;
      */
     public Obstacle1(int scrollspeed){
         this.scrollspeed = scrollspeed;
     }
-
-    private void InPosition(){
-        setLocation(getX(), getY() + scrollspeed);
-
+    
+    /**
+     * Act - do whatever the Obstacle1 wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act()
+    {
+        update();
     }
-
-    private void checkCollision(){
+    
+    @Override
+    public void update() {
+        checkCollision();
+        move();
+        addNewObstacle();
+    }
+    
+    @Override
+    public void move(){
+        setLocation(getX(), getY() + scrollspeed);
+    }
+    
+    @Override
+    public void checkCollision(){
         if (isTouching(Player.class)){ //Player collides with Obstacle
             Greenfoot.stop();
             System.out.println("You Crashed");
         }
     }
 
+    // ? Add multiple objects in 1 call???
+    
+    @Override 
+    public void destroy() {
+        World world = getWorld();
+        world.removeObject(this);
+    }
+    
+    
     private void addNewObstacle() {
         if (isAtEdge()) {
             World world = getWorld();  // Get the world instance
@@ -57,8 +74,8 @@ public class Obstacle1 extends Actor
                 }
 
                 world.removeObject(this);
-                int randomX = Greenfoot.getRandomNumber(world.getWidth());
-                world.addObject(new Obstacle1(scrollspeed), randomX, -50);
+                //int randomX = Greenfoot.getRandomNumber(world.getWidth());
+                //world.addObject(new Obstacle1(scrollspeed), randomX, -50);
             }
         }
     }

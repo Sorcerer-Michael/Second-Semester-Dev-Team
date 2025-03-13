@@ -1,4 +1,6 @@
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Write a description of class MyWorld here.
@@ -20,11 +22,9 @@ public class RoadWorld extends World
     private boolean scrollComplete = false;
  
     Player player = new Player("images/player1_side.png"); // Player object
- 
-
     public int scrollspeed = 4;
 
-    
+    private List<Obstacle> obstacles = new ArrayList<>();
 
     /**
      * Constructor for objects of class MyWorld.
@@ -46,10 +46,18 @@ public class RoadWorld extends World
 
         setBackground(backgroundImage);
 
+        // add obstacles to obstacle manager (List) ! probably want to create a separate obstacle manager class w/ allows for more control of what level gets what enemies.
+        obstacles.add(new Obstacle1(this.scrollspeed));
+        obstacles.add(new Obstacle1(this.scrollspeed));
+        
         // Add Actors
         addObject(player, WORLDWIDTH/2, WORLDHEIGHT-50);
-        addNewObstacle1();
-        addNewObstacle1();
+        
+        // loops through obstacle list and spawns them
+        for (Obstacle obstacle : obstacles) {
+            SpawnObstacle(obstacle);
+        }
+        
     }
 
     public void act() {
@@ -88,10 +96,9 @@ public class RoadWorld extends World
         return scrollComplete;
     }
     
-    private void addNewObstacle1(){ //Random Spawn per Run
+    private void SpawnObstacle(Obstacle obstacle){ //Random Spawn per Run
         int randomX = Greenfoot.getRandomNumber(getWidth());
-        Obstacle1 newObstacle = new Obstacle1(scrollspeed);
-        addObject(newObstacle, randomX, 0);
+        addObject((Actor)obstacle, randomX, 0);
     }  
     
     private void isGameFinished(){
