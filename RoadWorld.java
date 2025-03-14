@@ -53,11 +53,6 @@ public class RoadWorld extends World
     }
 
     public void act() {
-
-        if (!scrollComplete){
-            scrollBackground();
-        }
-        
         timer.setValue(30 - time.millisElapsed()/1000);
         if(timer.getValue() == 0){
             Greenfoot.stop();
