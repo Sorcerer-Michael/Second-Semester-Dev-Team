@@ -16,6 +16,7 @@ public class Obstacle1 extends Actor implements Obstacle
      */
     public Obstacle1(int scrollspeed){
         this.scrollspeed = scrollspeed;
+        setImage("images/man.png");
     }
     
     /**
@@ -40,29 +41,29 @@ public class Obstacle1 extends Actor implements Obstacle
     }
     
     @Override
-    public void checkCollision(){
-        if (isTouching(Player.class)){ //Player collides with Obstacle
+    public void checkCollision() {
+        if (isTouching(Player.class)) { //Player collides with Obstacle
             Greenfoot.stop();
             System.out.println("You Crashed");
         }
     }
 
-    // ? Add multiple objects in 1 call???
-    
     @Override 
     public void destroy() {
         World world = getWorld();
         world.removeObject(this);
     }
     
-    
+    // extra spawning for RoadWorld level
+    // Create a obstacle manager that handles spawning of obstacles
+    // Use the manager to determine how obstacles spawn depending on the level
+    // deprecated method (keep method for reference)
     private void addNewObstacle() {
         if (isAtEdge()) {
             World world = getWorld();  // Get the world instance
-
+            
             if (world instanceof RoadWorld) { 
                 RoadWorld roadWorld = (RoadWorld) world; 
-
                 if (roadWorld.isScrollComplete()) { 
                     
                     Obstacle1 lastObstacle = (Obstacle1) world.getObjects(Obstacle1.class).get(0);

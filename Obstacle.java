@@ -1,3 +1,4 @@
+
 public interface Obstacle {
     public void update();
     public void checkCollision();

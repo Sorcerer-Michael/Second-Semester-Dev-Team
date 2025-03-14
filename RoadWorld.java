@@ -49,6 +49,7 @@ public class RoadWorld extends World
         // add obstacles to obstacle manager (List) ! probably want to create a separate obstacle manager class w/ allows for more control of what level gets what enemies.
         obstacles.add(new Obstacle1(this.scrollspeed));
         obstacles.add(new Obstacle1(this.scrollspeed));
+        obstacles.add(new Meth(this.scrollspeed));
         
         // Add Actors
         addObject(player, WORLDWIDTH/2, WORLDHEIGHT-50);
@@ -61,7 +62,7 @@ public class RoadWorld extends World
     }
 
     public void act() {
-
+        // If scroll isn't completed continue to scroll background
         if (!scrollComplete){
             scrollBackground();
         }
@@ -85,7 +86,6 @@ public class RoadWorld extends World
             scrollComplete = true;
         }
     }
-
     private void checkScrolling(){
         if (!scrollComplete){
             scrollBackground();
