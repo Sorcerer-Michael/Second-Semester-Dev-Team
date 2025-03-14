@@ -21,7 +21,11 @@ public class GameOverWorld extends World
         GreenfootImage bg = new GreenfootImage(getWidth(), getHeight());
         bg.setColor(new Color(0, 0, 0, 100));
         bg.fillRect(0, 0, getWidth(), getHeight());
-        
         setBackground(bg);
+        
+        GreenfootImage text = new GreenfootImage("GAME OVER", 60, Color.WHITE, new Color(0, 0, 0, 0));
+        getBackground().drawImage(text, 100, 100);
+        
+        
     }
 }
