@@ -15,7 +15,7 @@ public class Meth extends Actor implements Obstacle
     private String statusDebuffOnCollision = "overconfident"; // When meth collides with player it applies the overconfident debuff to player
     private int moveSpeed;
     
-    private boolean notValidState = false;
+    private boolean isDestroyed = false;
     
     
     public Meth(int moveSpeed) {
@@ -30,19 +30,21 @@ public class Meth extends Actor implements Obstacle
     public void update() {
         move();
         
+        // if meth reaches bottom of window destroy object
         if (isAtEdge()) {
-            //world.removeObject(this);
-            notValidState = true;
+            isDestroyed = true;
             destroy();                
         }
-        
-        if (!notValidState) { // If object gets destroyed Stop checking for collision
+        // If object gets destroyed Stop checking for collision
+        if (!isDestroyed) { 
             checkCollision();
         }
+        // If Player collides with meth objects a specific amount
         if (collisionCount == 3) {
             System.out.println("Max debuff applied");
-            //Greenfoot.stop(); // stops game
-            //Greenfoot.setWorld(new Menu()); // placeholder after crash sends to main menu
+            collisionCount = 0;
+            Greenfoot.stop(); // stops game
+            Greenfoot.setWorld(new Menu()); // placeholder after crash sends to main menu
         }
         
     }
@@ -51,17 +53,8 @@ public class Meth extends Actor implements Obstacle
         
         if (isTouching(Player.class)) {
             collisionCount++;
-            if (collisionCount == 1000) {
-                System.out.println("Max debuff applied");
-                Greenfoot.stop(); // stops game
-                Greenfoot.setWorld(new Menu()); // placeholder after crash sends to main menu
-            }
-            
-          
+            System.out.println("Meth Collision Count: " + collisionCount);
             destroy();
-            
-            //Greenfoot.stop(); // tests collision
-            
         }
     }
     @Override

@@ -70,7 +70,7 @@ public class Player extends Actor
         
         
         // Logging methods
-        movementLog(); // logging movements in terminal
+        //movementLog(); // logging movements in terminal
         checkPlayerValues(); // press ` : to check player initial values
     }
     

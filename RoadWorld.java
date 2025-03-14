@@ -36,7 +36,7 @@ public class RoadWorld extends World
 
         backgroundImage = new GreenfootImage("road.png");
         scrollY = -backgroundImage.getHeight() + getHeight(); // Bottom Y-Coordinate
-
+        
         Greenfoot.setSpeed(50);
         
         timer.setValue(30);
@@ -61,6 +61,7 @@ public class RoadWorld extends World
             SpawnObstacle(obstacle);
         }
         
+        System.out.println("Meth Collision Count: " + Meth.collisionCount);
     }
 
     public void act() {
