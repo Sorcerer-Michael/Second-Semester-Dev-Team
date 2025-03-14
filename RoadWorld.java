@@ -22,7 +22,7 @@ public class RoadWorld extends World
     private boolean scrollComplete = false;
  
     Player player = new Player("images/player1_side.png"); // Player object
-    public int scrollspeed = 4;
+    public int scrollspeed = 2;
 
     private List<Obstacle> obstacles = new ArrayList<>();
 
@@ -49,7 +49,9 @@ public class RoadWorld extends World
         // add obstacles to obstacle manager (List) ! probably want to create a separate obstacle manager class w/ allows for more control of what level gets what enemies.
         obstacles.add(new Obstacle1(this.scrollspeed));
         obstacles.add(new Obstacle1(this.scrollspeed));
-        obstacles.add(new Meth(this.scrollspeed));
+        for (int count = 0; count < 5; count++) {
+            obstacles.add(new Meth(this.scrollspeed));
+        }
         
         // Add Actors
         addObject(player, WORLDWIDTH/2, WORLDHEIGHT-50);
@@ -98,7 +100,8 @@ public class RoadWorld extends World
     
     private void SpawnObstacle(Obstacle obstacle){ //Random Spawn per Run
         int randomX = Greenfoot.getRandomNumber(getWidth());
-        addObject((Actor)obstacle, randomX, 0);
+        int randomY = Greenfoot.getRandomNumber(200);
+        addObject((Actor)obstacle, randomX, randomY);
     }  
     
     private void isGameFinished(){

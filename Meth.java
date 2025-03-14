@@ -8,11 +8,19 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Meth extends Actor implements Obstacle
 {
+    
+    private static String icon = "images/gold-ball.png"; // sets image of all meth objects
+    public static int collisionCount = 0; // counts how many times the player has collided with a meth object (class variable)
+    
+    private String statusDebuffOnCollision = "overconfident"; // When meth collides with player it applies the overconfident debuff to player
     private int moveSpeed;
+    
+    private boolean notValidState = false;
+    
     
     public Meth(int moveSpeed) {
         this.moveSpeed = moveSpeed;
-        setImage("images/gold-ball.png");
+        setImage(icon);
     }
     public void act()
     {
@@ -21,17 +29,39 @@ public class Meth extends Actor implements Obstacle
     @Override
     public void update() {
         move();
-        checkCollision();
-        destroy();
+        
+        if (isAtEdge()) {
+            //world.removeObject(this);
+            notValidState = true;
+            destroy();                
+        }
+        
+        if (!notValidState) { // If object gets destroyed Stop checking for collision
+            checkCollision();
+        }
+        if (collisionCount == 3) {
+            System.out.println("Max debuff applied");
+            //Greenfoot.stop(); // stops game
+            //Greenfoot.setWorld(new Menu()); // placeholder after crash sends to main menu
+        }
         
     }
     @Override
     public void checkCollision() {
+        
         if (isTouching(Player.class)) {
-            Greenfoot.stop();
-            Greenfoot.setWorld(new Menu()); // placeholder after crash sends to main menu
-            // change to crashed menu
-            // reset game variables
+            collisionCount++;
+            if (collisionCount == 1000) {
+                System.out.println("Max debuff applied");
+                Greenfoot.stop(); // stops game
+                Greenfoot.setWorld(new Menu()); // placeholder after crash sends to main menu
+            }
+            
+          
+            destroy();
+            
+            //Greenfoot.stop(); // tests collision
+            
         }
     }
     @Override
@@ -41,11 +71,8 @@ public class Meth extends Actor implements Obstacle
     @Override
     public void destroy() {
         World world = getWorld();
-        if (isAtEdge()) {
-            world.removeObject(this);
-        }
-        
-        
+        world.removeObject(this);
+       
     }
     
     
