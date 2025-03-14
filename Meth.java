@@ -6,67 +6,22 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Meth extends Actor implements Obstacle
+public class Meth extends Actor
 {
-    
-    private static String icon = "images/gold-ball.png"; // sets image of all meth objects
-    public static int collisionCount = 0; // counts how many times the player has collided with a meth object (class variable)
-    
-    private String statusDebuffOnCollision = "overconfident"; // When meth collides with player it applies the overconfident debuff to player
-    private int moveSpeed;
-    
-    private boolean isDestroyed = false;
+    public String icon = "images/gold-ball.png";
+    public String statusDebuffOnCollision = "confident";
+    // Actor obstacle, int moveSpeed, String icon, String statusDebuffOnCollision
     
     
     public Meth(int moveSpeed) {
-        this.moveSpeed = moveSpeed;
-        setImage(icon);
+        Obstacle meth = new Obstacle(this, moveSpeed, icon, statusDebuffOnCollision);
     }
     public void act()
     {
-        update();
+        //update();
     }
-    @Override
-    public void update() {
-        move();
-        
-        // if meth reaches bottom of window destroy object
-        if (isAtEdge()) {
-            isDestroyed = true;
-            destroy();                
-        }
-        // If object gets destroyed Stop checking for collision
-        if (!isDestroyed) { 
-            checkCollision();
-        }
-        // If Player collides with meth objects a specific amount
-        if (collisionCount == 3) {
-            System.out.println("Max debuff applied");
-            collisionCount = 0;
-            Greenfoot.stop(); // stops game
-            Greenfoot.setWorld(new Menu()); // placeholder after crash sends to main menu
-        }
-        
-    }
-    @Override
-    public void checkCollision() {
-        
-        if (isTouching(Player.class)) {
-            collisionCount++;
-            System.out.println("Meth Collision Count: " + collisionCount);
-            destroy();
-        }
-    }
-    @Override
-    public void move() {
-        setLocation(getX(), getY() + moveSpeed);
-    }
-    @Override
-    public void destroy() {
-        World world = getWorld();
-        world.removeObject(this);
-       
-    }
+    
+    
     
     
     

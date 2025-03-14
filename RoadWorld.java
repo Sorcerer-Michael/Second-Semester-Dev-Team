@@ -47,10 +47,10 @@ public class RoadWorld extends World
         setBackground(backgroundImage);
 
         // add obstacles to obstacle manager (List) ! probably want to create a separate obstacle manager class w/ allows for more control of what level gets what enemies.
-        obstacles.add(new Obstacle1(this.scrollspeed));
-        obstacles.add(new Obstacle1(this.scrollspeed));
+        //obstacles.add(new Obstacle1(this.scrollspeed));
+        //obstacles.add(new Obstacle1(this.scrollspeed));
         for (int count = 0; count < 5; count++) {
-            obstacles.add(new Meth(this.scrollspeed));
+            //obstacles.add(new Meth(this.scrollspeed));
         }
         
         // Add Actors
@@ -61,7 +61,7 @@ public class RoadWorld extends World
             SpawnObstacle(obstacle);
         }
         
-        System.out.println("Meth Collision Count: " + Meth.collisionCount);
+        //System.out.println("Meth Collision Count: " + Meth.collisionCount);
     }
 
     public void act() {
@@ -102,7 +102,7 @@ public class RoadWorld extends World
     private void SpawnObstacle(Obstacle obstacle){ //Random Spawn per Run
         int randomX = Greenfoot.getRandomNumber(getWidth());
         int randomY = Greenfoot.getRandomNumber(200);
-        addObject((Actor)obstacle, randomX, randomY);
+        //addObject((Actor)obstacle, randomX, randomY);
     }  
     
     private void isGameFinished(){

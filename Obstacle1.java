@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Obstacle1 extends Actor implements Obstacle
+public class Obstacle1 extends Actor
 {
     private int scrollspeed;
     
@@ -28,19 +28,19 @@ public class Obstacle1 extends Actor implements Obstacle
         update();
     }
     
-    @Override
+    
     public void update() {
         checkCollision();
         move();
         addNewObstacle();
     }
     
-    @Override
+    
     public void move(){
         setLocation(getX(), getY() + scrollspeed);
     }
     
-    @Override
+    
     public void checkCollision() {
         if (isTouching(Player.class)) { //Player collides with Obstacle
             Greenfoot.stop();
@@ -48,7 +48,7 @@ public class Obstacle1 extends Actor implements Obstacle
         }
     }
 
-    @Override 
+   
     public void destroy() {
         World world = getWorld();
         world.removeObject(this);
