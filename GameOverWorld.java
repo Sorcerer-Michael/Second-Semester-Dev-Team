@@ -19,7 +19,7 @@ public class GameOverWorld extends World
         super(500, 600, 1); 
         
         GreenfootImage bg = new GreenfootImage(getWidth(), getHeight());
-        bg.setColor(new Color(0, 0, 0, 100));
+        bg.setColor(new Color(128, 128, 128, 180));
         bg.fillRect(0, 0, getWidth(), getHeight());
         setBackground(bg);
         
