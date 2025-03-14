@@ -1,7 +1,7 @@
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  
 /**
- * Write a description of class Player here.
+ * Basic Player controller
  * 
  * @author Jonathan Washington
  * @version 1.0

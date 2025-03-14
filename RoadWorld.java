@@ -24,7 +24,7 @@ public class RoadWorld extends World
     Player player = new Player("images/player1_side.png"); // Player object
     public int scrollspeed = 2;
 
-    private List<Obstacle> obstacles = new ArrayList<>();
+    private List<Actor> obstacles = new ArrayList<>();
 
     /**
      * Constructor for objects of class MyWorld.
@@ -50,14 +50,14 @@ public class RoadWorld extends World
         //obstacles.add(new Obstacle1(this.scrollspeed));
         //obstacles.add(new Obstacle1(this.scrollspeed));
         for (int count = 0; count < 5; count++) {
-            //obstacles.add(new Meth(this.scrollspeed));
+            obstacles.add(new Meth(this.scrollspeed));
         }
         
         // Add Actors
         addObject(player, WORLDWIDTH/2, WORLDHEIGHT-50);
         
         // loops through obstacle list and spawns them
-        for (Obstacle obstacle : obstacles) {
+        for (Actor obstacle : obstacles) {
             SpawnObstacle(obstacle);
         }
         
@@ -99,10 +99,10 @@ public class RoadWorld extends World
         return scrollComplete;
     }
     
-    private void SpawnObstacle(Obstacle obstacle){ //Random Spawn per Run
+    private void SpawnObstacle(Actor obstacle){ //Random Spawn per Run
         int randomX = Greenfoot.getRandomNumber(getWidth());
         int randomY = Greenfoot.getRandomNumber(200);
-        //addObject((Actor)obstacle, randomX, randomY);
+        addObject(obstacle, randomX, randomY);
     }  
     
     private void isGameFinished(){
