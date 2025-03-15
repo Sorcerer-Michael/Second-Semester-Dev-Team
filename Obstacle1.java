@@ -34,8 +34,7 @@ public class Obstacle1 extends Actor
 
     private void checkCollision(){
         if (isTouching(Player.class)){ //Player collides with Obstacle
-            Greenfoot.stop();
-            System.out.println("You Crashed");
+            Greenfoot.setWorld(new GameOverWorld());
         }
     }
 

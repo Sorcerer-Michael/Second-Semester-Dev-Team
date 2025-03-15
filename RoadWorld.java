@@ -21,9 +21,7 @@ public class RoadWorld extends World
  
     Player player = new Player("images/player1_side.png"); // Player object
  
-
     public int scrollspeed = 4;
-
     
 
     /**
@@ -43,7 +41,7 @@ public class RoadWorld extends World
         time.mark();
         showText("Timer", 40, 20);
         addObject(timer, 40, 50);
-
+        
         setBackground(backgroundImage);
 
         // Add Actors
@@ -53,11 +51,6 @@ public class RoadWorld extends World
     }
 
     public void act() {
-
-        if (!scrollComplete){
-            scrollBackground();
-        }
-        
         timer.setValue(30 - time.millisElapsed()/1000);
         if(timer.getValue() == 0){
             Greenfoot.stop();
