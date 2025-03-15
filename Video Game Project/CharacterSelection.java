@@ -6,18 +6,19 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class GameWorld extends World
+public class CharacterSelection extends World
 {
 
     /**
      * Constructor for objects of class GameWorld.
      * 
      */
-    public GameWorld()
+    public CharacterSelection()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1);
+        setBackground("garagebackround.png");
         BackButton backButton = new BackButton();
-        addObject(backButton, 500, 40);
+        addObject(backButton, 550, 80);
     }
 }
