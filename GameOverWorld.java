@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class GameOverWorld extends World
 {
-
+    
     /**
      * Constructor for objects of class GameOverWorld.
      * 
@@ -26,6 +26,7 @@ public class GameOverWorld extends World
         GreenfootImage text = new GreenfootImage("GAME OVER", 60, Color.WHITE, new Color(0, 0, 0, 0));
         getBackground().drawImage(text, 100, 100);
         
-        
+        RestartButton restartButton = new RestartButton();
+        addObject(restartButton, 125, 325);
     }
 }
