@@ -23,10 +23,13 @@ public class GameOverWorld extends World
         bg.fillRect(0, 0, getWidth(), getHeight());
         setBackground(bg);
         
-        GreenfootImage text = new GreenfootImage("GAME OVER", 60, Color.WHITE, new Color(0, 0, 0, 0));
-        getBackground().drawImage(text, 100, 100);
+        GreenfootImage text = new GreenfootImage("GAME OVER", 80, Color.WHITE, new Color(0, 0, 0, 0));
+        getBackground().drawImage(text, 50, 100);
         
         RestartButton restartButton = new RestartButton();
         addObject(restartButton, 125, 325);
+        
+        HomeButton homeButton = new HomeButton();
+        addObject(homeButton, 375, 325);
     }
 }
