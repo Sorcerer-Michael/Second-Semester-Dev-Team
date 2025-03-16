@@ -33,7 +33,7 @@ public class RoadWorld extends World
     public RoadWorld()
     {
         super(500, 600, 1);
-
+        Meth.collisionCount = 0; // band aid fix to resetting collision count
         backgroundImage = new GreenfootImage("road.png");
         scrollY = -backgroundImage.getHeight() + getHeight(); // Bottom Y-Coordinate
         
