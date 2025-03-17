@@ -19,6 +19,11 @@ public class CharacterSelection extends World
         super(600, 400, 1);
         setBackground("garagebackround.png");
         BackButton backButton = new BackButton();
+        nextCharacter right = new nextCharacter();
+        previousCharacter left = new previousCharacter();
+        
         addObject(backButton, 550, 80);
+        addObject(left, 180, 370);
+        addObject(right, 400, 373);
     }
 }
