@@ -71,7 +71,11 @@ public class Player extends Actor
         
         // Logging methods
         //movementLog(); // logging movements in terminal
-        checkPlayerValues(); // press ` : to check player initial values
+
+        //checkPlayerValues(); // press ` : to check player initial values
+
+        //checkPlayerValues(); // press ` : to check player initial values
+
     }
     
     
@@ -104,6 +108,7 @@ public class Player extends Actor
         
     }
     // DEBUG Methods (only used for testing)
+    /*
     public void checkPlayerValues() {
         if (Greenfoot.isKeyDown("`")) {
             System.out.printf("player sprite used: %s\n", sprite);
@@ -122,4 +127,5 @@ public class Player extends Actor
         if (pressS != false) System.out.printf("Moving backwards: %b\n", pressS);
 
     }
+    */
 }

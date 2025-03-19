@@ -22,9 +22,11 @@ public class RoadWorld extends World
     private boolean scrollComplete = false;
  
     Player player = new Player("images/player1_side.png"); // Player object
+
     public int scrollspeed = 2;
 
     private List<Actor> obstacles = new ArrayList<>();
+    
 
     /**
      * Constructor for objects of class MyWorld.
@@ -43,7 +45,7 @@ public class RoadWorld extends World
         time.mark();
         showText("Timer", 40, 20);
         addObject(timer, 40, 50);
-
+        
         setBackground(backgroundImage);
 
         // add obstacles to obstacle manager (List) ! probably want to create a separate obstacle manager class w/ allows for more control of what level gets what enemies.
@@ -65,11 +67,7 @@ public class RoadWorld extends World
     }
 
     public void act() {
-        // If scroll isn't completed continue to scroll background
-        if (!scrollComplete){
-            scrollBackground();
-        }
-        
+
         timer.setValue(30 - time.millisElapsed()/1000);
         if(timer.getValue() == 0){
             Greenfoot.stop();
