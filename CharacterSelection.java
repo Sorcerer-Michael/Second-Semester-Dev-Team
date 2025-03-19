@@ -21,9 +21,11 @@ public class CharacterSelection extends World
         BackButton backButton = new BackButton();
         nextCharacter right = new nextCharacter();
         previousCharacter left = new previousCharacter();
+        GoButton go = new GoButton();
         
         addObject(backButton, 550, 80);
         addObject(left, 180, 370);
         addObject(right, 400, 373);
+        addObject(go, 295, 315);
     }
 }
