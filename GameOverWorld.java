@@ -32,4 +32,8 @@ public class GameOverWorld extends World
         HomeButton homeButton = new HomeButton();
         addObject(homeButton, 375, 325);
     }
+    
+    public void blowWorld(){
+        
+    }
 }
