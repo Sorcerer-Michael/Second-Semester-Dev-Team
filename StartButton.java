@@ -14,7 +14,7 @@ public class StartButton extends Actor
     public void act()
     {
         if (Greenfoot.mouseClicked(this)){
-            Greenfoot.setWorld(new RoadWorld());
+            Greenfoot.setWorld(new CharacterSelection());
             //Greenfoot.setWorld(new CharacterSelection());
         }
     }
