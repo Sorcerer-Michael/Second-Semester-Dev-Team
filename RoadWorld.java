@@ -18,8 +18,9 @@ public class RoadWorld extends World
 
     private GreenfootImage backgroundImage;
 
-    private int scrollY;
+    private int backgroundY;
     private boolean scrollComplete = false;
+    private int lastY;
  
     private Player player = new Player("images/player1_side.png"); // Player object
 
@@ -38,7 +39,7 @@ public class RoadWorld extends World
         super(500, 600, 1);
         Meth.collisionCount = 0; // band aid fix to resetting collision count
         backgroundImage = new GreenfootImage("road.png");
-        scrollY = -backgroundImage.getHeight() + getHeight(); // Bottom Y-Coordinate
+        backgroundY = -backgroundImage.getHeight() + getHeight(); // Bottom Y-Coordinate
         
         Greenfoot.setSpeed(50);
         
@@ -53,7 +54,7 @@ public class RoadWorld extends World
         //obstacles.add(new Obstacle1(this.scrollspeed));
         //obstacles.add(new Obstacle1(this.scrollspeed));
         for (int count = 0; count < 5; count++) {
-            obstacles.add(new Meth(this.scrollspeed));
+            obstacles.add(new Meth(2));
         }
         
         // Add Actors
@@ -80,11 +81,12 @@ public class RoadWorld extends World
     }
 
     private void scrollBackground(){
-        if (scrollY < 0) {
-            GreenfootImage background = getBackground();
-            background.drawImage(backgroundImage, 0, scrollY);
-            scrollY += scrollspeed; 
-        } else {
+        int playerY = player.getY();
+        int playerMovement = lastY - playerY;
+        
+        // if background at top, scroll is done
+        if (backgroundY >= 0){
+            backgroundY = 0;
             scrollComplete = true;
         }
     }
