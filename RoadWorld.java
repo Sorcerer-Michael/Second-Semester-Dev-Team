@@ -89,6 +89,11 @@ public class RoadWorld extends World
             backgroundY = 0;
             scrollComplete = true;
         }
+        
+        // if scroll not done, adjust background when player at boundary
+        if (!scrollComplete && ((playerY <= TOP_BOUNDARY && playerMovement > 0) || (playerY >= BOTTOM_BOUNDARY && playerMovement <0))){
+            backgroundY += playerMovement;
+        }
     }
     private void checkScrolling(){
         if (!scrollComplete){
