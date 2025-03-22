@@ -55,7 +55,7 @@ public class RoadWorld extends World
         }
 
         // Add Actors
-        addObject(player, WORLDWIDTH/2, WORLDHEIGHT-50);
+        addObject(player, WORLDWIDTH/2, WORLDHEIGHT-200);
         lastY = player.getY();
 
         // loops through obstacle list and spawns them
@@ -94,6 +94,10 @@ public class RoadWorld extends World
         // if scroll not done, adjust background when player at boundary
         if (!scrollComplete && ((playerY <= TOP_BOUNDARY && playerMovement > 0) || (playerY >= BOTTOM_BOUNDARY && playerMovement < 0))){
             backgroundY += playerMovement;
+            //Makes sure player doesnt go below at start
+            if(backgroundY < -backgroundImage.getHeight() + WORLDHEIGHT){
+                backgroundY = -backgroundImage.getHeight() + WORLDHEIGHT;
+            }
             //keep player inside of boundary
             if (playerY <= TOP_BOUNDARY && playerMovement > 0){
                 player.setLocation(player.getX(), TOP_BOUNDARY);
@@ -104,7 +108,6 @@ public class RoadWorld extends World
         
         // update background
         updateBackground();
-        
         lastY = player.getY();
         
     }
