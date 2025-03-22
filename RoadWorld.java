@@ -11,7 +11,7 @@ import java.util.List;
 public class RoadWorld extends World
 {
     private SimpleTimer time = new SimpleTimer();
-    Counter timer = new Counter();
+    private Counter timer = new Counter();
     
     private final int WORLDWIDTH = getWidth();
     private final int WORLDHEIGHT = getHeight();
@@ -21,9 +21,8 @@ public class RoadWorld extends World
     private int scrollY;
     private boolean scrollComplete = false;
  
-    Player player = new Player("images/player1_side.png"); // Player object
+    private Player player = new Player("images/player1_side.png"); // Player object
 
-    public int scrollspeed = 2;
     private final int TOP_BOUNDARY = 250;
     private final int BOTTOM_BOUNDARY = 400;
 
