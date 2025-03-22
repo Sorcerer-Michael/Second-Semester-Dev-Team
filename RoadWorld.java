@@ -56,6 +56,7 @@ public class RoadWorld extends World
 
         // Add Actors
         addObject(player, WORLDWIDTH/2, WORLDHEIGHT-50);
+        lastY = player.getY();
 
         // loops through obstacle list and spawns them
         for (Actor obstacle : obstacles) {
@@ -76,6 +77,10 @@ public class RoadWorld extends World
         scrollBackground();
     }
 
+    /**
+     * this method does player movement at boundaries,
+     * updates background position and image
+     */
     private void scrollBackground(){
         int playerY = player.getY();
         int playerMovement = lastY - playerY;
@@ -87,9 +92,9 @@ public class RoadWorld extends World
         }
 
         // if scroll not done, adjust background when player at boundary
-        if (!scrollComplete && ((playerY <= TOP_BOUNDARY && playerMovement > 0) || (playerY >= BOTTOM_BOUNDARY && playerMovement <0))){
+        if (!scrollComplete && ((playerY <= TOP_BOUNDARY && playerMovement > 0) || (playerY >= BOTTOM_BOUNDARY && playerMovement < 0))){
             backgroundY += playerMovement;
-            //keep player in boundary
+            //keep player inside of boundary
             if (playerY <= TOP_BOUNDARY && playerMovement > 0){
                 player.setLocation(player.getX(), TOP_BOUNDARY);
             } else {
@@ -104,11 +109,17 @@ public class RoadWorld extends World
         
     }
     
+    
+    /**
+     * Update background image (when game intialzes)
+     *
+     */
     public void updateBackground(){
         GreenfootImage newBg = new GreenfootImage(WORLDWIDTH, WORLDHEIGHT);
         newBg.drawImage(backgroundImage, 0, backgroundY);
         setBackground(newBg);
-    }
+        }
+    
     public boolean isScrollComplete(){
         return scrollComplete;
     }
