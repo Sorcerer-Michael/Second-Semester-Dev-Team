@@ -29,7 +29,7 @@ public class Meth extends Actor
     public void act()
     {
         meth.update(this, getOneIntersectingObject(Player.class));
-        
+        /*
 
         if (this.meth.collided) {
             collisionCount++;
@@ -43,7 +43,7 @@ public class Meth extends Actor
             Greenfoot.stop(); // stops game
             Greenfoot.setWorld(new Menu()); // placeholder after crash sends to main menu
         }
-        
+        */
     }
     
     // Additional methods below (unique to Meth class)
