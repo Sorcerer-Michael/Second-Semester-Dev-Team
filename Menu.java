@@ -17,8 +17,8 @@ public class Menu extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1);
-        ballballball = new GreenfootSound("ballballball.mp3");
-        ballballball.playLoop();
+        //ballballball = new GreenfootSound("ballballball.mp3");
+        //ballballball.playLoop();
         
         setBackground("menu_background.png");
         

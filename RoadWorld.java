@@ -12,16 +12,14 @@ public class RoadWorld extends World
 {
     private SimpleTimer time = new SimpleTimer();
     private Counter timer = new Counter();
-
     private final int WORLDWIDTH = getWidth();
     private final int WORLDHEIGHT = getHeight();
-
     private GreenfootImage backgroundImage;
-
+    
     private int backgroundY;
     private boolean scrollComplete = false;
     private int lastY;
-
+    
     private Player player = new Player("images/player1_side.png"); // Player object
 
     private final int TOP_BOUNDARY = 250;
@@ -74,9 +72,8 @@ public class RoadWorld extends World
             Greenfoot.stop();
         }
 
-        checkScrolling();
         isGameFinished();
-
+        scrollBackground();
     }
 
     private void scrollBackground(){
@@ -100,16 +97,18 @@ public class RoadWorld extends World
             }
         }
         
-        // update background 
+        // update background
+        updateBackground();
+        
+        lastY = player.getY();
         
     }
-
-    private void checkScrolling(){
-        if (!scrollComplete){
-            scrollBackground();
-        }
+    
+    public void updateBackground(){
+        GreenfootImage newBg = new GreenfootImage(WORLDWIDTH, WORLDHEIGHT);
+        newBg.drawImage(backgroundImage, 0, backgroundY);
+        setBackground(newBg);
     }
-
     public boolean isScrollComplete(){
         return scrollComplete;
     }
